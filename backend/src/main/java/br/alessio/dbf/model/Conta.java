@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.Instant;
 
 @Data
 @Builder
@@ -25,6 +26,9 @@ public class Conta {
     @Length(min = 5, message = "*Seu Nome deve ter pelo menos 5 characteres")
     @NotEmpty(message = "*Por favor digite um Nome")
     private String name;
+
+    @Column(name = "date")
+    private Instant date;
 
     @Column(name = "category", length = 255)
     @Enumerated(EnumType.STRING)

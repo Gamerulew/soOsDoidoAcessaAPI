@@ -1,5 +1,6 @@
 package br.alessio.dbf.web.rest;
 
+import br.alessio.dbf.model.Category;
 import br.alessio.dbf.model.Conta;
 import br.alessio.dbf.model.ContaType;
 import br.alessio.dbf.service.ContaService;
@@ -57,7 +58,6 @@ public class ContaResource {
     @GetMapping("/type/{type}/sum/value/")
     public ResponseEntity<Float> sumValueByType(@PathVariable ContaType type) {
         Float total = contaService.sumValueByType(type);
-        System.out.println(total);
         if (total != null) {
             return ResponseEntity.ok().body(total);
         } else {
@@ -65,6 +65,15 @@ public class ContaResource {
         }
     }
 
+    @GetMapping("/type/{type}/category/{category}/month/{month}/sum/value/")
+    public ResponseEntity<Object> sumValueByCategory(@PathVariable Category category, @PathVariable ContaType type, @PathVariable Integer month) {
+        Object total = contaService.sumValueByCategory(category, type, month);
+        if (total != null) {
+            return ResponseEntity.ok().body(total);
+        } else {
+            return ResponseEntity.ok().body(null);
+        }
+    }
 
     @PutMapping("/")
     public ResponseEntity<Conta> updateConta(@Valid @RequestBody Conta conta) throws URISyntaxException {

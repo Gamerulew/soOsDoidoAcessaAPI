@@ -1,5 +1,6 @@
 package br.alessio.dbf.service;
 
+import br.alessio.dbf.model.Category;
 import br.alessio.dbf.model.Conta;
 import br.alessio.dbf.model.ContaType;
 import br.alessio.dbf.repository.ContaRepository;
@@ -42,4 +43,9 @@ public class ContaService {
         return contaRepository.sumValueByType(typeR);
     }
 
+    public Object sumValueByCategory(Category category, ContaType type, Integer month) {
+        String categoryR = category.toString();
+        String typeR = type.toString();
+        return contaRepository.sumValueByCategory(categoryR, typeR, month);
+    }
 }
