@@ -28,6 +28,7 @@ public class Conta {
     private String name;
 
     @Column(name = "date")
+    @NotNull(message = "*Por favor digite uma data")
     private Instant date;
 
     @Column(name = "category", length = 255)
@@ -43,6 +44,10 @@ public class Conta {
     @Enumerated(EnumType.STRING)
     @NotNull(message = "*Por favor digite um valor")
     private ContaType type;
+
+    @JoinColumn(name="usuario_id")
+    @ManyToOne
+    private Usuario usuario;
 
     @Column(name = "active", length = 255)
     private boolean active;

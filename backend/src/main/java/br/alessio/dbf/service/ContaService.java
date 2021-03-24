@@ -48,4 +48,11 @@ public class ContaService {
         String typeR = type.toString();
         return contaRepository.sumValueByCategory(categoryR, typeR, month);
     }
+
+    public Object sumValueByTypeAndMonths(ContaType type) {
+        String typeR = type.toString();
+        return contaRepository.sumValueByTypeAndMonths(typeR);
+    }
+
+
 }

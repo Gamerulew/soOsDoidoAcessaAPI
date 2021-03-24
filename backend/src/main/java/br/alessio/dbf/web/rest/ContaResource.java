@@ -75,6 +75,16 @@ public class ContaResource {
         }
     }
 
+    @GetMapping("/type/{type}/months/sum/value/")
+    public ResponseEntity<Object> sumValueByTypeAndMonths(@PathVariable ContaType type) {
+        Object total = contaService.sumValueByTypeAndMonths(type);
+        if (total != null) {
+            return ResponseEntity.ok().body(total);
+        } else {
+            return ResponseEntity.ok().body(null);
+        }
+    }
+
     @PutMapping("/")
     public ResponseEntity<Conta> updateConta(@Valid @RequestBody Conta conta) throws URISyntaxException {
         if (conta.getId() == null) {

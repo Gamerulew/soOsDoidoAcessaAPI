@@ -25,4 +25,7 @@ public interface ContaRepository extends JpaRepository<Conta, Long> {
 
     @Query(value = "SELECT sum(value),COUNT(id) from tbl_conta where category = :categoryR and type = :typeR and MONTH(date) = :dateR", nativeQuery = true)
     Object sumValueByCategory(@Param("categoryR") String category, @Param("typeR") String typeR, @Param("dateR") Integer dateR);
+
+    @Query(value = "SELECT sum(value) as valorTotal, MONTH(date) as mes from tbl_conta where type = :typeR GROUP BY MONTH(date) ORDER BY MONTH(date)", nativeQuery = true)
+    List<Object> sumValueByTypeAndMonths(@Param("typeR") String typeR);
 }

@@ -18,6 +18,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter implements WebMvcConfigurer {
 
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedOrigins("*").allowedMethods("*");
+    }
+
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -75,11 +80,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter imple
                 .antMatchers("/assets/**");
 
     }
-
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/*").allowedMethods("");
-    }
-
-
 }

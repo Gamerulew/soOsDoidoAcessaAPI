@@ -23,7 +23,6 @@ public class AUlaDemoApplication {
 //				new AnnotationConfigApplicationContext(AUlaDemoApplication.class);
 //
 //		for (String beanName : applicationContext.getBeanDefinitionNames()) {
-			System.out.println("Tete");
 //		}
 	}
 

@@ -4,7 +4,6 @@ public enum Category {
     MORADIA,
     TRANSPORTE,
     ALIMENTACAO,
-    DESPESAS,
     PESSOAIS,
     LAZER,
     SAUDE,
