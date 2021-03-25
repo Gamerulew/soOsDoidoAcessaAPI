@@ -2,6 +2,7 @@ package br.alessio.dbf.repository;
 
 import br.alessio.dbf.model.Conta;
 import br.alessio.dbf.model.ContaType;
+import br.alessio.dbf.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,7 +19,7 @@ public interface ContaRepository extends JpaRepository<Conta, Long> {
 
     //@Query("select a from Pessoa a")
     //List<Pessoa> findTodoMundo();
-    List<Conta> findContasByType(ContaType type);
+    List<Conta> findContasByTypeAndUsuario(ContaType type, Usuario usuario);
 
     @Query(value = "SELECT sum(value) from tbl_conta where type = :typeR and usuario_id = :usuarioId", nativeQuery = true)
     Float sumValueByType(@Param("typeR") String type, @Param("usuarioId") String usuarioId);

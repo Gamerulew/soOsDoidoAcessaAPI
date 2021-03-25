@@ -49,9 +49,9 @@ public class ContaResource {
         return ResponseEntity.ok().body(lista);
     }
 
-    @GetMapping("/type/{type}")
-    public ResponseEntity<List<Conta>> getByType(@PathVariable ContaType type) {
-        List<Conta> contas = contaService.findByType(type);
+    @GetMapping("/type/{type}/user/{usuarioId}")
+    public ResponseEntity<List<Conta>> getByType(@PathVariable ContaType type, @PathVariable Integer usuarioId) {
+        List<Conta> contas = contaService.findByType(type, usuarioId);
         return ResponseEntity.ok().body(contas);
     }
 

@@ -22,7 +22,7 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @Column(name = "full_name", length = 255)
     @Length(min = 5, message = "*Seu Nome ter pelo menos 5 characteres")
@@ -54,4 +54,7 @@ public class Usuario {
     private Boolean active;
 
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

@@ -3,6 +3,7 @@ package br.alessio.dbf.service;
 import br.alessio.dbf.model.Category;
 import br.alessio.dbf.model.Conta;
 import br.alessio.dbf.model.ContaType;
+import br.alessio.dbf.model.Usuario;
 import br.alessio.dbf.repository.ContaRepository;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +35,10 @@ public class ContaService {
         return conta;
     }
 
-    public List<Conta> findByType(ContaType type) {
-        return contaRepository.findContasByType(type);
+    public List<Conta> findByType(ContaType type, Integer usuarioId) {
+        Usuario usuario = new Usuario();
+        usuario.setId(usuarioId);
+        return contaRepository.findContasByTypeAndUsuario(type, usuario);
     }
 
     public Float sumValueByType(ContaType type, Integer usuarioId) {
