@@ -38,20 +38,23 @@ public class ContaService {
         return contaRepository.findContasByType(type);
     }
 
-    public Float sumValueByType(ContaType type) {
+    public Float sumValueByType(ContaType type, Integer usuarioId) {
         String typeR = type.toString();
-        return contaRepository.sumValueByType(typeR);
+        String usuarioIdR = usuarioId.toString();
+        return contaRepository.sumValueByType(typeR, usuarioIdR);
     }
 
-    public Object sumValueByCategory(Category category, ContaType type, Integer month) {
+    public Object sumValueByCategory(Category category, ContaType type, Integer month, Integer usuarioId) {
         String categoryR = category.toString();
         String typeR = type.toString();
-        return contaRepository.sumValueByCategory(categoryR, typeR, month);
+        String usuarioIdR = usuarioId.toString();
+        return contaRepository.sumValueByCategory(categoryR, typeR, month, usuarioIdR);
     }
 
-    public Object sumValueByTypeAndMonths(ContaType type) {
+    public Object sumValueByTypeAndMonths(ContaType type, Integer usuarioId) {
         String typeR = type.toString();
-        return contaRepository.sumValueByTypeAndMonths(typeR);
+        String usuarioIdR = usuarioId.toString();
+        return contaRepository.sumValueByTypeAndMonths(typeR, usuarioIdR);
     }
 
 

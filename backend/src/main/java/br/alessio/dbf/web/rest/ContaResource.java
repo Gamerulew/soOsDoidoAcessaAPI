@@ -55,9 +55,9 @@ public class ContaResource {
         return ResponseEntity.ok().body(contas);
     }
 
-    @GetMapping("/type/{type}/sum/value/")
-    public ResponseEntity<Float> sumValueByType(@PathVariable ContaType type) {
-        Float total = contaService.sumValueByType(type);
+    @GetMapping("/type/{type}/sum/value/user/{usuarioId}")
+    public ResponseEntity<Float> sumValueByType(@PathVariable ContaType type, @PathVariable Integer usuarioId) {
+        Float total = contaService.sumValueByType(type, usuarioId);
         if (total != null) {
             return ResponseEntity.ok().body(total);
         } else {
@@ -65,9 +65,9 @@ public class ContaResource {
         }
     }
 
-    @GetMapping("/type/{type}/category/{category}/month/{month}/sum/value/")
-    public ResponseEntity<Object> sumValueByCategory(@PathVariable Category category, @PathVariable ContaType type, @PathVariable Integer month) {
-        Object total = contaService.sumValueByCategory(category, type, month);
+    @GetMapping("/type/{type}/category/{category}/month/{month}/sum/value/user/{usuarioId}")
+    public ResponseEntity<Object> sumValueByCategory(@PathVariable Category category, @PathVariable ContaType type, @PathVariable Integer month, @PathVariable Integer usuarioId) {
+        Object total = contaService.sumValueByCategory(category, type, month, usuarioId);
         if (total != null) {
             return ResponseEntity.ok().body(total);
         } else {
@@ -75,9 +75,9 @@ public class ContaResource {
         }
     }
 
-    @GetMapping("/type/{type}/months/sum/value/")
-    public ResponseEntity<Object> sumValueByTypeAndMonths(@PathVariable ContaType type) {
-        Object total = contaService.sumValueByTypeAndMonths(type);
+    @GetMapping("/type/{type}/months/sum/value/user/{usuarioId}")
+    public ResponseEntity<Object> sumValueByTypeAndMonths(@PathVariable ContaType type, @PathVariable Integer usuarioId) {
+        Object total = contaService.sumValueByTypeAndMonths(type, usuarioId);
         if (total != null) {
             return ResponseEntity.ok().body(total);
         } else {

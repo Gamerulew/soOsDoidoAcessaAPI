@@ -20,12 +20,12 @@ public interface ContaRepository extends JpaRepository<Conta, Long> {
     //List<Pessoa> findTodoMundo();
     List<Conta> findContasByType(ContaType type);
 
-    @Query(value = "SELECT sum(value) from tbl_conta where type = :typeR", nativeQuery = true)
-    Float sumValueByType(@Param("typeR") String type);
+    @Query(value = "SELECT sum(value) from tbl_conta where type = :typeR and usuario_id = :usuarioId", nativeQuery = true)
+    Float sumValueByType(@Param("typeR") String type, @Param("usuarioId") String usuarioId);
 
-    @Query(value = "SELECT sum(value),COUNT(id) from tbl_conta where category = :categoryR and type = :typeR and MONTH(date) = :dateR", nativeQuery = true)
-    Object sumValueByCategory(@Param("categoryR") String category, @Param("typeR") String typeR, @Param("dateR") Integer dateR);
+    @Query(value = "SELECT sum(value),COUNT(id) from tbl_conta where category = :categoryR and type = :typeR and MONTH(date) = :dateR and usuario_id = :usuarioId", nativeQuery = true)
+    Object sumValueByCategory(@Param("categoryR") String category, @Param("typeR") String typeR, @Param("dateR") Integer dateR, @Param("usuarioId") String usuarioId);
 
-    @Query(value = "SELECT sum(value) as valorTotal, MONTH(date) as mes from tbl_conta where type = :typeR GROUP BY MONTH(date) ORDER BY MONTH(date)", nativeQuery = true)
-    List<Object> sumValueByTypeAndMonths(@Param("typeR") String typeR);
+    @Query(value = "SELECT sum(value) as valorTotal, MONTH(date) as mes from tbl_conta where type = :typeR and usuario_id = :usuarioId GROUP BY MONTH(date) ORDER BY MONTH(date)", nativeQuery = true)
+    List<Object> sumValueByTypeAndMonths(@Param("typeR") String typeR, @Param("usuarioId") String usuarioId);
 }
